@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Presentation", "01.Presentation", "{F72FCABE-444D-4853-9722-430FEFBCE76A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Application", "02.Application", "{B02A2A87-7DCC-4D6B-8596-B19DE8F31D22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Domain", "03.Domain", "{E4CDD0E8-6099-4E5E-A5FA-08A3BB9EE4A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Infraestructure", "04.Infraestructure", "{D01C1476-1823-42AB-AD8F-CFF6AF46903A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.01.Repository", "04.01.Repository", "{67FEE01E-BEBE-423B-BD20-980065AD154E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.02.Library", "04.02.Library", "{CAD3D8FA-D26A-4068-8038-871DCE86AF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeExpress.Domain", "MeExpress.Domain\MeExpress.Domain.csproj", "{E1DF599E-F744-4D5D-B113-449145F3369D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1DF599E-F744-4D5D-B113-449145F3369D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DF599E-F744-4D5D-B113-449145F3369D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DF599E-F744-4D5D-B113-449145F3369D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DF599E-F744-4D5D-B113-449145F3369D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67FEE01E-BEBE-423B-BD20-980065AD154E} = {D01C1476-1823-42AB-AD8F-CFF6AF46903A}
+		{CAD3D8FA-D26A-4068-8038-871DCE86AF3B} = {D01C1476-1823-42AB-AD8F-CFF6AF46903A}
+		{E1DF599E-F744-4D5D-B113-449145F3369D} = {E4CDD0E8-6099-4E5E-A5FA-08A3BB9EE4A6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55FD1D47-B4E7-44EC-8D53-1BFE4A132F28}
+	EndGlobalSection
+EndGlobal
