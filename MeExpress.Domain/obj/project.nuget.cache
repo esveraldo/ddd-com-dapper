@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5e2K7hckXZoOO2v7Q3RmEgyyt1exCYDwQ8iCZDKD/mKSJlvms642CL+wLTIo7Cy9PNwNhLRruzaN1DTfMtEieQ==",
+  "dgSpecHash": "4WrFYEqvA15QWlbIeowEQqlvYegPDVEV05gldTfVXyu8SlW4gLFHJI1UYvjGkCTnO0ufdq0KcviTEDZpeQwmKg==",
   "success": true,
-  "projectFilePath": "C:\\MeExpress\\MeExpress.Domain\\MeExpress.Domain.csproj",
+  "projectFilePath": "C:\\MEExpress\\MeExpress.Domain\\MeExpress.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

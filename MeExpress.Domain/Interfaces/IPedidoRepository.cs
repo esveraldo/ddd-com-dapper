@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MeExpress.Domain.Interfaces
 {
-    public interface IPedido
+    public interface IPedidoRepository
     {
         void Incluir(Pedido pedido);
         List<Pedido> ObterPedidosSolicitados();
@@ -17,6 +17,6 @@ namespace MeExpress.Domain.Interfaces
         List<Pedido> ObterPedidosEmTransporte();
         List<Pedido> ObterPedidosEntregues();
         List<Pedido> ObterPedidos();
-        void AlterarStatusDoPedido(string PedidoId, PedidoStatus status);
+        void AlterarStatusDoPedido(string pedidoId, PedidoStatus status);
     }
 }

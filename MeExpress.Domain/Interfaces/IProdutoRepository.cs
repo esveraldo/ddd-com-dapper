@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MeExpress.Domain.Interfaces
 {
-    public interface ICliente
+    public interface IProdutoRepository
     {
-        Cliente ObterPorCpf(string cpf);
-        void Incluir(Cliente cliente);
+        List<Produto> ObterProdutoList();
     }
 }
