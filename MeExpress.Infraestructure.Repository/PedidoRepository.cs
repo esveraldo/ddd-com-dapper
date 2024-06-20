@@ -1,4 +1,5 @@
-﻿using MeExpress.Domain.Enums;
+﻿using ExemploDDD.Repository.Connection;
+using MeExpress.Domain.Enums;
 using MeExpress.Domain.Interfaces;
 using MeExpress.Domain.Models;
 using System;
@@ -11,46 +12,73 @@ namespace MeExpress.Infraestructure.Repository
 {
     public class PedidoRepository : IPedidoRepository
     {
-        private static List<Pedido> pedidos = new List<Pedido>();
         public void AlterarStatusDoPedido(string pedidoId, PedidoStatus status)
         {
-            var pedido = pedidos.Where(p => p.Id == pedidoId).FirstOrDefault();
-            pedido.Status = status;
+            DbHelper.Execute("PedidoAlterarStatus", new {PedidoId = pedidoId, PedidoStatus = (int)status});
         }
 
         public void Incluir(Pedido pedido)
         {
-            pedidos.Add(pedido);
+            DbHelper.Execute("PedidoIncluir", new
+            {
+                Id = pedido.Id,
+                DataSolicitado = DateTime.Now,
+                ClienteId = pedido.Cliente.Id,
+                ClienteNome = pedido.Cliente.Nome,
+                ClienteEmail = pedido.Cliente.Email,
+                ClienteEmpresa = pedido.Cliente.Empresa,
+                ClienteEndereco = pedido.Cliente.Endereco,
+                ClienteNumero = pedido.Cliente.Numero,
+                ClienteComplemento = pedido.Cliente.Complemento,
+                ClienteBairro = pedido.Cliente.Bairro,
+                ClienteCidade = pedido.Cliente.Cidade,
+                ClienteEstado = pedido.Cliente.Estado,
+                ClienteCPF = pedido.Cliente.CPF,
+                ClienteCEP = pedido.Cliente.Cep,
+                PedidoStatusId = (int)pedido.Status
+            });
+            foreach (var item in pedido.ProdutoList)
+            {
+                DbHelper.Execute("PedidoProdutoIncluir", new
+                {
+                    Id = item.Id,
+                    PedidoId = pedido.Id,
+                    ProdutoId = item.Produto.Id,
+                    ProdutoNome = item.Produto.Nome,
+                    ProdutoPreco = item.Produto.Preco,
+                    Quantidade = item.Quantidade
+                });
+            }
         }
 
         public List<Pedido> ObterPedidos()
         {
-            return pedidos;
+            throw new NotImplementedException();
         }
 
         public List<Pedido> ObterPedidosEmProducao()
         {
-            return pedidos.Where(p => p.Status == PedidoStatus.EmProducao).ToList();
+            throw new NotImplementedException();
         }
 
         public List<Pedido> ObterPedidosEmTransporte()
         {
-            return pedidos.Where(p => p.Status == PedidoStatus.EmTransporte).ToList();
+            throw new NotImplementedException();
         }
 
         public List<Pedido> ObterPedidosEntregues()
         {
-            return pedidos.Where(p => p.Status == PedidoStatus.Entregue).ToList();
+            throw new NotImplementedException();
         }
 
         public List<Pedido> ObterPedidosProduzidos()
         {
-            return pedidos.Where(p => p.Status == PedidoStatus.Produzido).ToList();
+            throw new NotImplementedException();
         }
 
         public List<Pedido> ObterPedidosSolicitados()
         {
-            return pedidos.Where(p => p.Status == PedidoStatus.Solicitado).ToList();
+            throw new NotImplementedException();
         }
     }
 }

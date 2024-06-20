@@ -9,6 +9,6 @@ namespace MeExpress.Domain.Interfaces
 {
     public interface IProdutoRepository
     {
-        List<Produto> ObterProdutoList();
+        List<Produto> ObterList();
     }
 }

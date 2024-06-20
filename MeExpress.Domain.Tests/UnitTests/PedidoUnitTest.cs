@@ -17,7 +17,7 @@ namespace MeExpress.Domain.Tests.UnitTests
             var produtoRep = new ProdutoRepository();
             var pedidoProdutoItemRep = new PedidoProdutoItemRepository();
 
-            var produtoList = produtoRep.ObterProdutoList();
+            var produtoList = produtoRep.ObterList();
             var itemList = new List<PedidoProdutoItem>();
 
             foreach (var p in produtoList)

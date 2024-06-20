@@ -10,6 +10,7 @@ namespace MeExpress.Domain.Interfaces
     public interface IClienteRepository
     {
         Cliente ObterPorCpf(string cpf);
+        Cliente ObterPorId(string id);
         void Incluir(Cliente cliente);
         void Alterar(Cliente cliente);
     }
