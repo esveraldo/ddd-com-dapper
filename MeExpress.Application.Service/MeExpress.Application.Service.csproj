@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MeExpress.Domain\MeExpress.Domain.csproj" />
+    <ProjectReference Include="..\MeExpress.Infraestructure.Repository\MeExpress.Infraestructure.Repository.csproj" />
   </ItemGroup>
 
 </Project>

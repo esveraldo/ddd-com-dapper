@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MeExpress.Application.Service.Services
 {
-    internal class ProdutoAppService : IProdutoAppService
+    public class ProdutoAppService : IProdutoAppService
     {
         private IProdutoRepository produtoRepository;
         public ProdutoAppService(IProdutoRepository produtoRepositoryInstance)

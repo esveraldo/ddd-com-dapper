@@ -1,0 +1,102 @@
+﻿@model MeExpress.Domain.Cliente
+
+@{
+    ViewBag.Title = "PedidoNovoConfirmarCliente";
+}
+
+<style>
+    input {
+        max-width: 800px;
+        margin-right: 0;
+        padding-right: 0;
+    }
+
+
+    form > div {
+        padding-left: 0 !important;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+@if (!string.IsNullOrEmpty(Model.Id))
+{
+    <h2>Confirmar Dados do Cliente</h2>
+}
+else
+{
+    <h2>Incluir Cliente</h2>
+}
+<hr />
+
+<form method="post">
+
+    
+    <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+
+   
+
+    <div class="col-md-4">
+        <label for="CPF">CPF:</label>
+        <input class="form-control" name="CPF" id="CPF" value="@Model.CPF" />
+    </div>
+    <div class="col-md-8">
+        <label for="Email">E-Mail:</label>
+        <input class="form-control" name="Email" id="Email" value="@Model.Email" />
+    </div>
+
+
+    <div class="col-md-6">
+        <label>Nome:</label>
+        <input class="form-control" name="Nome" id="Nome" value="@Model.Nome" />
+    </div>
+
+    <div class="col-md-6">
+        <label>Empresa:</label>
+        <input class="form-control" name="Empresa" id="Empresa" value="@Model.Empresa" />
+    </div>
+
+    <div class="col-md-5">
+        <label>Endereco:</label>
+        <input class="form-control" name="Endereco" id="Endereco" value="@Model.Endereco" />
+    </div>
+
+    <div class="col-md-1">
+        <label>Número:</label>
+        <input class="form-control" name="Numero" id="Numero" value="@Model.Numero" />
+    </div>
+    <div class="col-md-2">
+        <label>Complemento:</label>
+        <input class="form-control" name="Complemento" id="Complemento" value="@Model.Complemento" />
+    </div>
+
+
+    <div class="col-md-4">
+        <label>Bairro:</label>
+        <input class="form-control" name="Bairro" id="Bairro" value="@Model.Bairro" />
+    </div>
+
+    <div class="col-md-8">
+        <label>Cidade:</label>
+        <input class="form-control" name="Cidade" id="Cidade" value="@Model.Cidade" />
+    </div>
+    <div class="col-md-2">
+        <label>Estado:</label>
+        <input class="form-control" name="Estado" id="Estado" value="@Model.Estado" />
+    </div>
+    <div class="col-md-2">
+        <label>CEP:</label>
+        <input class="form-control" name="CEP" id="CEP" value="@Model.CEP" />
+    </div>
+
+    <div class="clearfix"></div>
+        <div style="margin-top:30px;" >
+            <p>
+                <input type="submit" value="Confirmar" class="btn btn-default" />
+            </p>
+        </div>
+    
+    
+</form>
+
+

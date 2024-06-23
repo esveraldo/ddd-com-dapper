@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MeExpress.Application.Service.Interfaces
 {
-    internal interface IProdutoAppService : IProdutoRepository
+    public interface IProdutoAppService : IProdutoRepository
     {
     }
 }

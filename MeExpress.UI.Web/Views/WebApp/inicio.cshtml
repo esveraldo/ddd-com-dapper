@@ -1,0 +1,18 @@
+﻿@using MeExpress.Domain;
+@using MeExpress.Domain.Enums
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<h2>ME.Express</h2>
+<h3>Material de Escritório Delivery Intranet</h3>
+<hr />
+
+<ul class="nav">
+    <li class="nav-item"><a href='@Url.Action("PedidoNovo")'><i class="glyphicon glyphicon-list-alt"></i> Novo Pedido</a></li>
+    <li class="nav-item"><a href='@Url.Action("PedidoPorStatus", new { status = PedidoStatus.Solicitado })'><i class="glyphicon glyphicon-thumbs-up"></i> Pedidos Solicitados</a></li>
+    <li class="nav-item"><a href='@Url.Action("PedidoPorStatus", new { status = PedidoStatus.EmProducao })'><i class="glyphicon glyphicon-refresh"></i> Pedidos Em Produção</a></li>
+    <li class="nav-item"><a href='@Url.Action("PedidoPorStatus", new { status = PedidoStatus.Produzido })'><i class="glyphicon glyphicon-exclamation-sign"></i> Pedidos Prontos para Entrega</a></li>
+    <li class="nav-item"><a href='@Url.Action("PedidoPorStatus", new { status = PedidoStatus.EmTransporte })'><i class="glyphicon glyphicon-plane"></i> Pedidos Em Transporte</a></li>
+    <li class="nav-item"><a href='@Url.Action("PedidoPorStatus", new { status = PedidoStatus.Entregue })'><i class="glyphicon glyphicon-ok"></i> Pedidos Entregues</a></li>
+</ul>
