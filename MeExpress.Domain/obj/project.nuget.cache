@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qHNstSauj8jMmNtiL2VCt8HJcwZlBBZhLDBKUekJvMhATStBrWn+oKjXOk0c6mkom5AYlBLotSeiduSa+byeyA==",
+  "dgSpecHash": "4WrFYEqvA15QWlbIeowEQqlvYegPDVEV05gldTfVXyu8SlW4gLFHJI1UYvjGkCTnO0ufdq0KcviTEDZpeQwmKg==",
   "success": true,
-  "projectFilePath": "C:\\ddd-com-dapper\\MeExpress.Domain\\MeExpress.Domain.csproj",
+  "projectFilePath": "C:\\MEExpress\\MeExpress.Domain\\MeExpress.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

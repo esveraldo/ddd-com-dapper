@@ -2,6 +2,7 @@
 using MeExpress.Domain.Enums;
 using MeExpress.Domain.Interfaces;
 using MeExpress.Domain.Models;
+using MeExpress.Infraestructure.Repository.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,42 @@ namespace MeExpress.Infraestructure.Repository
             }
         }
 
+        private List<Pedido> ObterPedidoPorStatus(PedidoStatus status)
+        {
+            var pedidoDataModelList = DbHelper.Query<PedidoDataModel>("PedidoObterPorPedidoStatus", new { PedidoStatusId = (int)status });
+            var lista = new List<Pedido>();
+            foreach (var pedidoDataModel in pedidoDataModelList)
+            {
+                lista.Add(ObterPedidoPorId(pedidoDataModel.Id));
+            }
+            return lista;
+        }
+
+        public Pedido ObterPedidoPorId(string id)
+        {
+            var pedidoDataModel = DbHelper.QueryFirstOrDefault<PedidoDataModel>("PedidoObterPorId", new { Id = id });
+            var pedido = pedidoDataModel.ToPedido();
+
+            var produtoListDataModel = DbHelper.Query<PedidoProdutoItemDataModel>("PedidoProdutoItemObterPorPedidoId", new { PedidoId = id }).Where(m => m.Quantidade > 0).ToList();
+
+            pedido.ProdutoList = new List<PedidoProdutoItem>();
+            foreach (var p in produtoListDataModel)
+            {
+                pedido.ProdutoList.Add(new PedidoProdutoItem()
+                {
+                    Id = p.Id,
+                    Produto = new Produto()
+                    {
+                        Id = p.ProdutoId,
+                        Nome = p.ProdutoNome,
+                        Preco = p.ProdutoPreco
+                    },
+                    Quantidade = p.Quantidade
+                });
+            }
+            return pedido;
+        }
+
         public List<Pedido> ObterPedidos()
         {
             throw new NotImplementedException();
@@ -58,27 +95,27 @@ namespace MeExpress.Infraestructure.Repository
 
         public List<Pedido> ObterPedidosEmProducao()
         {
-            throw new NotImplementedException();
+            return ObterPedidoPorStatus(PedidoStatus.EmProducao);
         }
 
         public List<Pedido> ObterPedidosEmTransporte()
         {
-            throw new NotImplementedException();
+            return ObterPedidoPorStatus(PedidoStatus.EmTransporte);
         }
 
         public List<Pedido> ObterPedidosEntregues()
         {
-            throw new NotImplementedException();
+            return ObterPedidoPorStatus(PedidoStatus.Entregue);
         }
 
         public List<Pedido> ObterPedidosProduzidos()
         {
-            throw new NotImplementedException();
+            return ObterPedidoPorStatus(PedidoStatus.Produzido);
         }
 
         public List<Pedido> ObterPedidosSolicitados()
         {
-            throw new NotImplementedException();
+            return ObterPedidoPorStatus(PedidoStatus.Solicitado);
         }
     }
 }

@@ -1,0 +1,127 @@
+﻿@model MeExpress.Domain.ViewModels.PedidoListViewModel
+@{
+    ViewBag.Title = "PedidoPorStatus";
+}
+
+@{
+    string titulo = null;
+    switch (Model.Status)
+    {
+        case MeExpress.Domain.Enums.PedidoStatus.Solicitado:
+            titulo = "Pedidos Solicitados";
+            break;
+        case MeExpress.Domain.Enums.PedidoStatus.EmProducao:
+            titulo = "Pedidos em Produção";
+            break;
+        case MeExpress.Domain.Enums.PedidoStatus.Produzido:
+            titulo = "Pedido Prontos para Entrega";
+            break;
+        case MeExpress.Domain.Enums.PedidoStatus.EmTransporte:
+            titulo = "Pedidos em transporte";
+            break;
+        case MeExpress.Domain.Enums.PedidoStatus.Entregue:
+            titulo = "Pedidos Entregues";
+            break;
+        default:
+            break;
+    }
+}
+<h2>@titulo</h2>
+
+<table class="table table-hover table-bordered">
+
+
+    @foreach (var pedido in Model.PedidoList)
+    {
+
+        <tr style="background-color:#ddd">
+            <th style="width:10%"># Pedido</th>
+            <th>Cliente</th>
+            <th>Data Solicitação</th>
+            <th>Hora</th>
+        </tr>
+        <tr>
+            <td>@pedido.Numero</td>
+            <td>
+
+                <button class="btn btn-link" data-toggle="collapse" data-target="#dados">  <i class="glyphicon glyphicon-plus-sign"></i> </button>
+                @pedido.Cliente.Nome
+            </td>
+            <td>@pedido.DataSolicitado.ToShortDateString()</td>
+            <td>@pedido.DataSolicitado.ToShortTimeString()</td>
+        </tr>
+        <tr id="dados" class="collapse">
+            <td colspan="4">
+                @pedido.Cliente.Nome <br />
+                @pedido.Cliente.Empresa <br />
+                CPF: @pedido.Cliente.CPF<br />
+            </td>
+        </tr>
+
+
+        if (Model.Status == MeExpress.Domain.Enums.PedidoStatus.Produzido)
+        {
+            <tr>
+                <td colspan="4">
+                    @pedido.Cliente.Nome <br />
+                    @pedido.Cliente.Endereco, @pedido.Cliente.Numero @pedido.Cliente.Complemento<br />
+                    @pedido.Cliente.Bairro<br />
+                    @pedido.Cliente.Cidade, @pedido.Cliente.Estado
+
+                </td>
+            </tr>
+        }
+
+
+        <tr>
+            <td colspan="4">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:1%">Quantidade</th>
+                        <th>Produto</th>
+                    </tr>
+                    @foreach (var item in pedido.ProdutoList)
+                    {
+                        <tr>
+                            <td>@item.Quantidade</td>
+                            <td>@item.Produto.Nome</td>
+                        </tr>
+                    }
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @{
+                    switch (Model.Status)
+                    {
+                        case MeExpress.Domain.Enums.PedidoStatus.Solicitado:
+                            <a href='@Url.Action("PedidoAlterarStatus", new { pedidoId=pedido.Id, status=MeExpress.Domain.Enums.PedidoStatus.EmProducao } )'>Iniciar Produção</a>
+                            break;
+                        case MeExpress.Domain.Enums.PedidoStatus.EmProducao:
+                            <a href='@Url.Action("PedidoAlterarStatus", new { pedidoId=pedido.Id, status=MeExpress.Domain.Enums.PedidoStatus.Produzido } )'>Produção Completa.</a>
+                            break;
+                        case MeExpress.Domain.Enums.PedidoStatus.Produzido:
+                            <a href='@Url.Action("PedidoAlterarStatus", new { pedidoId=pedido.Id, status=MeExpress.Domain.Enums.PedidoStatus.EmTransporte } )'>Iniciar Entrega </a>
+                            break;
+                        case MeExpress.Domain.Enums.PedidoStatus.EmTransporte:
+                            <a href='@Url.Action("PedidoAlterarStatus", new { pedidoId=pedido.Id, status=MeExpress.Domain.Enums.PedidoStatus.Entregue } )'>Produto Entregue </a>
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding-bottom:60px"></td>
+
+        </tr>
+
+
+    }
+</table>

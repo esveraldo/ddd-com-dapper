@@ -24,7 +24,7 @@ namespace MeExpress.Infraestructure.Repository
 
         public Cliente ObterPorCpf(string cpf)
         {
-            return DbHelper.QueryFirstOrDefault<Cliente>("ClienteObterPorCPF", new { @CPF = cpf});
+            return DbHelper.QueryFirstOrDefault<Cliente>("ClienteObterPorCPF", new { @CPF = cpf });
         }
 
         public Cliente ObterPorId(string id)

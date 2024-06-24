@@ -12,12 +12,7 @@ namespace ExemploDDD.Repository.Connection
     public static class DbHelper
     {
         private const string stringDeConexao=
-                    @"Data Source=(localdb)\mssqllocaldb;
-                      Initial Catalog = MeExpressDB; 
-                      User ID=sa;
-                      Password=esve6140
-                     Integrated Security = True; 
-                     Pooling=False";
+                    @"Server=Localhost;Initial Catalog=MeExpressDB;Persist Security Info=False;User ID=sa;Password=esve6140;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
 
         public static SqlConnection obterConexao()
         {
