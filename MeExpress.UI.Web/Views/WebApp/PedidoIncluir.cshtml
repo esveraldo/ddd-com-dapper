@@ -1,0 +1,90 @@
+﻿@model MeExpress.Domain.Models.Pedido
+
+@{
+    ViewBag.Title = "PedidoIncluir";
+}
+
+<h2>Incluir Pedido</h2>
+<hr />
+
+<form method="post">
+    <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+    <input type="hidden" id="Cliente_Id" name="Cliente.Id" value="@Model.Cliente.Id" />
+    <input type="hidden" id="Cliente_Nome" name="Cliente.Nome" value="@Model.Cliente.Nome" />
+    <input type="hidden" id="Cliente_Empresa" name="Cliente.Empresa" value="@Model.Cliente.Empresa" />
+    <input type="hidden" id="Cliente_Endereco" name="Cliente.Endereco" value="@Model.Cliente.Endereco" />
+    <input type="hidden" id="Cliente_Numero" name="Cliente.Numero" value="@Model.Cliente.Numero" />
+    <input type="hidden" id="Cliente_Complemento" name="Cliente.Complemento" value="@Model.Cliente.Complemento" />
+    <input type="hidden" id="Cliente_Bairro" name="Cliente.Bairro" value="@Model.Cliente.Bairro" />
+    <input type="hidden" id="Cliente_Cidade" name="Cliente.Cidade" value="@Model.Cliente.Cidade" />
+    <input type="hidden" id="Cliente_Estado" name="Cliente.Estado" value="@Model.Cliente.Estado" />
+    <input type="hidden" id="Cliente_CEP" name="Cliente.CEP" value="@Model.Cliente.Cep" />
+    <input type="hidden" id="Cliente_CPF" name="Cliente.CPF" value="@Model.Cliente.CPF" />
+    <input type="hidden" id="Cliente_Email" name="Cliente.Email" value="@Model.Cliente.Email" />
+
+    <section>
+        <h4>Para:</h4>
+        <ul style="list-style-type:none;padding-left:15px">
+            <li><strong> @Model.Cliente.Nome </strong></li>
+            <li>@Model.Cliente.Empresa</li>
+            <li>@Model.Cliente.Endereco, @Model.Cliente.Numero @Model.Cliente.Complemento - @Model.Cliente.Bairro</>
+            <li>@Model.Cliente.Cidade,@Model.Cliente.Estado </li>
+            <li>@Model.Cliente.Cep </li>
+            <li>Email de Contato: @Model.Cliente.Email</li>
+
+        </ul>
+    </section>
+
+
+    <hr />
+
+    <section>
+        <h4>Produtos:</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-1"># Qtde</th>
+                    <th class="col-md-9">Item</th>
+                    <th class="col-md-1 text-right">Valor</th>
+                    <th class="col-md-1 text-right">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ProdutoList.Count; i++)
+                {
+
+                    <tr>
+                        <td>
+                            <input id='@string.Format("ProdutoList_{0}__Quantidade", i)' name="ProdutoList[@i].Quantidade" type="text" class="form-control" style="max-width:80px" value="@Model.ProdutoList[i].Quantidade" />
+                            <input id='@string.Format("ProdutoList_{0}__Produto_Nome", i)' name="ProdutoList[@i].Produto.Nome" type="hidden" value="@Model.ProdutoList[i].Produto.Nome" />
+                            <input id='@string.Format("ProdutoList_{0}__Produto_Preco", i)' name="ProdutoList[@i].Produto.Preco" type="hidden" value="@Model.ProdutoList[i].Produto.Preco" />
+                            <input id='@string.Format("ProdutoList_{0}__Produto_Id", i)' name="ProdutoList[@i].Produto.Id" type="hidden" value="@Model.ProdutoList[i].Produto.Id" />
+                            <input id='@string.Format("ProdutoList_{0}__Id", i)' name="ProdutoList[@i].Id" type="hidden" value="@Model.ProdutoList[i].Id" />
+                        </td>
+
+                        <td>@Model.ProdutoList[i].Produto.Nome</td>
+                        <td class="text-right">@Model.ProdutoList[i].Produto.Preco.ToString("c")</td>
+                        <td class="text-right">@Model.ProdutoList[i].Total.ToString("c")</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <button type="submit" name="atualizarButton" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-refresh"></i> Atualizar</button>
+                    </td>
+                    <td></td>
+                    <td class="text-right"><strong>Total:</strong></td>
+                    <td class="text-right"><strong>@Model.ValorTotal.ToString("c")</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+    <hr />
+    <section style="margin-bottom:100px">
+        <button type="submit" name="submitButton" class="btn btn-info">Confirmar Pedido</button>
+
+    </section>
+
+
+</form>
